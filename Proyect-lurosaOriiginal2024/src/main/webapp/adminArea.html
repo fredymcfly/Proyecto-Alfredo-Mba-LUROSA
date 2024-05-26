@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="./css/clienteAdmin.css">    
+    <script type="text/javascript">
+    
+    //----------------LISTAR CLIENTES---------------
+    function cargarClientes(){
+        fetch('ServletListarClientes')
+        .then(response => response.json())    
+        .then(data => pintarTablaClientes(data));
+    }
+
+    /*Función para pintar los datos de la tabla clientes*/
+    function pintarTablaClientes(datos) {
+        let html = "<table class='datos-clientes'>";            
+            html += "<tr>";
+            html += "<th>idCliente</th>";
+            html += "<th>IdUsuario</th>";
+            html += "<th>nombre</th>";
+            html += "<th>apellido</th>";
+            html += "<th>direccion</th>";
+            html += "<th>provincia</th>";
+            html += "<th>pais</th>";
+            html += "<th>poblacion</th>";
+            html += "<th>telefono</th>";
+            html += "<th>MODIFICAR</th>";
+            html += "<th>ELIMINAR</th>";
+            html += "</tr>";
+        
+        for(var i=0; i<datos.length; i++) {
+            html += `<tr>
+            <td>${datos[i].idCliente}</td>
+            <td>${datos[i].idUsuario}</td>
+            <td>${datos[i].nombre}</td>
+            <td>${datos[i].apellido}</td>
+            <td>${datos[i].direccion}</td>
+            <td>${datos[i].provincia}</td>
+            <td>${datos[i].pais}</td>
+            <td>${datos[i].poblacion}</td>
+            <td>${datos[i].telefono}</td>
+            <td><a href='editarCliente.html?idCliente=${datos[i].idCliente}'><button type="submit">Modificar</button></a></td>
+            <td>        
+                <form onsubmit="return confirmarEliminacion();" action="ServletEliminarCliente" method="post">
+                    <input type="hidden" name="idCliente" value="${datos[i].idCliente}">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+            </tr>`;
+        }
+        
+        html += "</table>";
+        
+        document.getElementById("listadoDatos").innerHTML = html;
+    }
+
+    //---------------LISTAR PRODUCTOS---------------
+    function cargarProductos() {
+        fetch('ServletListarProductos')
+        .then(response => response.json())    
+        .then(data => pintarTablaProductos(data));
+    }
+
+    /*Función para pintar los datos de la tabla Producto*/
+    function pintarTablaProductos(datos) {
+        let html = "<table class='datos-productos'>";            
+            html += "<tr>";
+            html += "<th>idProducto</th>";                
+            html += "<th>Nombre Producto</th>";
+            html += "<th>Descripcion</th>";
+            html += "<th>Precio</th>";
+            html += "<th>Stock</th>";                
+            html += "<th>MODIFICAR</th>";
+            html += "<th>ELIMINAR</th>";
+            html += "</tr>";
+        
+        for(var i=0; i<datos.length; i++) {
+            html += `<tr>
+            <td>${datos[i].idProducto}</td>                
+            <td>${datos[i].nombreproducto}</td>
+            <td>${datos[i].descripcion}</td>
+            <td>${datos[i].precio}</td>
+            <td>${datos[i].stock}</td>                
+            <td><a href='editarProducto.html?idProducto=${datos[i].idProducto}'><button type="submit">Modificar</button></a></td>
+            <td>        
+                <form onsubmit="return confirmarEliminacion();" action="ServletEliminarProducto" method="post">
+                    <input type="hidden" name="idProducto" value="${datos[i].idProducto}">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+            </tr>`;
+        }
+        
+        html += "</table>";
+        
+        document.getElementById("listadoDatos").innerHTML = html;
+    }
+
+    //---------------LISTAR CATEGORIAS--------------
+    function cargarCategorias() {
+        fetch('ServletListarCategorias')
+        .then(response => response.json())    
+        .then(data => pintarTablaCategorias(data));
+    }
+
+    /*Función para pintar los datos de la tabla Categoria*/
+    function pintarTablaCategorias(datos) {
+        let html = "<table class='datos-categoria'>";            
+            html += "<tr>";
+            html += "<th>idCategoria</th>";                
+            html += "<th>Nombre Categoria</th>";                
+            html += "<th>MODIFICAR</th>";
+            html += "<th>ELIMINAR</th>";
+            html += "</tr>";
+            
+            for(var i=0; i<datos.length; i++) {
+                html += `<tr>
+                <td>${datos[i].idCategoria}</td>                
+                <td>${datos[i].nombreCategoria}</td>
+                    
+                <td><a href='editarCategoria.html?idCategoria=${datos[i].idCategoria}'><button type="submit">Modificar</button></a></td>
+                <td>        
+                    <form onsubmit="return confirmarEliminacion();" action="ServletEliminarCategoria" method="post">
+                        <input type="hidden" name="idCategoria" value="${datos[i].idCategoria}">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+                </tr>`;
+            }            
+        
+        html += "</table>";
+        
+        document.getElementById("listadoDatos").innerHTML = html;
+    }
+
+    //---------------LISTAR PEDIDOS--------------  
+    function cargarPedidos() {
+        fetch('ServletListarPedido')
+        .then(response => response.json())    
+        .then(data => pintarTablaPedido(data));
+    }
+
+    /*Función para pintar los datos de la tabla Pedido*/
+    function pintarTablaPedido(datos) {
+        let html = "<table class='datos-pedido'>";            
+            html += "<tr>";
+            html += "<th>idPedido</th>";    
+            html += "<th>IdCategoria</th>";
+            html += "<th>Nombre Producto</th>";
+            html += "<th>Descripcion</th>";
+            html += "<th>Precio</th>";
+            html += "<th>Stock</th>";                
+            html += "<th>MODIFICAR</th>";
+            html += "<th>ELIMINAR</th>";
+            html += "</tr>";
+            
+        for(var i=0; i<datos.length; i++) {
+            html += `<tr>
+            <td>${datos[i].idPedido}</td>
+            <td>${datos[i].idCategoria}</td>
+            <td>${datos[i].nombreProducto}</td>
+            <td>${datos[i].descripcion}</td>
+            <td>${datos[i].precio}</td>
+            <td>${datos[i].stock}</td>                
+            <td><a href='editarPedido.html?idPedido=${datos[i].idPedido}'><button type="submit">Modificar</button></a></td>
+            <td>        
+                <form onsubmit="return confirmarEliminacion();" action="ServletEliminarPedido" method="post">
+                    <input type="hidden" name="idPedido" value="${datos[i].idPedido}">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+            </tr>`;
+        }
+        
+        html += "</table>";
+        
+        document.getElementById("listadoDatos").innerHTML = html;
+    }        
+            
+    window.onload = function() {
+        cargarPedidos();
+    }
+    </script>
+    
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>Panel de Administración</h1>
+        <nav>
+            <ul>
+            	<li><a href="CatalogoPrincipal.html">Inicio</a></li>
+                <li><a href="#" onclick="cargarProductos()">Productos</a></li>
+                <li><a href="#" onclick="cargarCategorias()">Categorías</a></li>
+                <li><a href="#" onclick="cargarClientes()">Clientes</a></li>
+                <li><a href="#" onclick="cargarPedidos()">Pedidos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido del panel de administración -->
+    <section id="contenido">
+        <!-- Sección de administración de productos -->
+        <div id="admin-clientes">
+            <h2>Administrar Datos</h2>
+            <div id="listadoDatos"></div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

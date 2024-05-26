@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Editar cliente</title>
+<link rel="stylesheet" href="/Css/EditarNewProducto.css">
+
+<script type="text/javascript">
+	
+	// Configurar la solicitud Fetch
+	const opciones = { 
+	  method: 'GET'
+	};
+	
+   function obtenerParametroDeURL(nombreParametro) {
+	  const parametros = new URLSearchParams(window.location.search);
+	  return parametros.get(nombreParametro);
+	}
+	
+	function llamada(idCliente){
+		
+		//URL del servlet y parámetro		
+		let url = 'ServletLeerCliente?idCliente=' + idCliente;
+		
+		//hacemos la llamada al servlet de lectura de cliente
+		fetch(url, opciones)
+		  .then(response => {
+		    if (!response.ok) {
+		      throw new Error('Hubo un problema con la solicitud: ' + response.status);
+		    }
+		    return response.json(); // o response.text() dependiendo del tipo de respuesta
+		  })
+		  .then(data => {
+		    // Manejar la respuesta del servlet
+		    mostrarCliente(data);
+		    //console.log(data);
+		  })
+		  .catch(error => {
+		    console.error('Error al realizar la solicitud:', error);
+		  });
+		
+		//fetch('ServletLeerCliente')
+		//.then(response => response.json())	
+		//.then(data => pintarTabla(data))
+	}
+	
+	function mostrarCliente(cliente)
+	{
+		let html = `<input type='hidden' name='idUsuario' value='${cliente.idUsuario}' >		
+		<input type='hidden' name='idCliente' value='${cliente.idCliente}' >
+		<input type='text' name='nombre' value='${cliente.nombre}' placeholder='NOMBRE'>
+		<input type='text' name='apellido' value='${cliente.apellido}' placeholder='APELLIDO'>
+		<input type='text' name='direccion' value='${cliente.direccion}' placeholder='DIRECCION'>
+		<input type='text' name='provincia' value='${cliente.provincia}' placeholder='PROVINCIA'>
+		<input type='text' name='pais' value='${cliente.pais}' placeholder='PAÍS'>
+		<input type='text' name='poblacion' value='${cliente.poblacion}' placeholder='POBLACIÓN'>
+		<input type='text' name='telefono' value='${cliente.telefono}' placeholder='TELEFONO'>`;
+		
+		document.getElementById("editarClientes").innerHTML = html;
+	}
+
+	window.onload = function(){
+	    const valorParametro = obtenerParametroDeURL('idCliente');	    
+		llamada(valorParametro);
+	};
+	
+</script>
+</head>
+<body>
+	 		<form action="ServletGuardarCliente" method="post">
+            <h2>Editar CLIENTE</h2>
+            <HR/>
+            
+            <div id="editarClientes">
+           
+            </div>            
+            
+            <input class="btn" type="submit" value="Guardar">          
+            
+            </form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea Catergoria</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <!-- Inicio de la página con el encabezado -->
+    <header class="header">
+        <div class="menu container">
+            <a href="./CatalogoPrincipal.html" class="logo">LUROSA</a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="./imagenes/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="./login.html">Mujer</a></li>
+                    <li><a href="./registro.html">Hombre</a></li>
+                    <li><a href="./CatalogoPrincipal.html">Catálogo</a></li>
+                    <li><a href="./Nosotros.html">Nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="user-session">
+            <a href="./perfil.html">Mi perfil</a>
+            <a href="./logout.html">Cerrar sesión</a>
+        </div>
+    </header>
+ 	
+    <!-- Formulario de inicio de sesión -->
+    <main class="main-content container">
+        <form action="ServletInsertarCategoria" method="post">
+            <h2>Crear Categoria</h2>
+            <input type="text" name="nombre" placeholder="Nombre" >
+            <input type="text" name="descripcion" placeholder="Descripción">
+            <input class="btn" type="submit" value="Guardar">
+            
+                
+           
+        </form>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Loren</h3>
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="./Nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="#">Guía de cuidados de productos</a></li>
+                    <li><a href="#">Condiciones de Compra</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

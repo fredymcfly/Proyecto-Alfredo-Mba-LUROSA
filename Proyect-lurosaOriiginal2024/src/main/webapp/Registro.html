@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - LUROSA</title>
+    <link rel="stylesheet" href="./css/registro.css">
+</head>
+<body>
+    <!-- Inicio de la página con el encabezado -->
+    <header class="header">
+        <div class="menu container">
+            <a href="./CatalogoPrincipal.html" class="logo">LUROSA</a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="./imagenes/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="">Mujer</a></li>
+                    <li><a href="">Hombre</a></li>
+                    <li><a href="./CatalogoSegundario.html">Catálogo</a></li>
+                    <li><a href="./Nosotros.html">Nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="user-session">
+            <a href="./perfil.html">Mi perfil</a>
+            <a href="./logout.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <!-- Formulario de registro -->
+    <main class="main-content container">
+        <form action="ServletRegistro" method="post">
+            <h2>Crear Cuenta Cliente</h2>
+            <hr>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="apellido" placeholder="Apellido" required>
+            <input type="text" name="direccion" placeholder="Dirección" required>
+            <input type="text" name="provincia" placeholder="Provincia" required>
+            <input type="text" name="pais" placeholder="País" required>
+            <input type="text" name="poblacion" placeholder="Población" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" required>
+            
+            <h2>Crear Usuario</h2>
+            <hr>
+            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            
+            <br>
+            <input class="btn" type="submit" value="Crear">
+        </form>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Loren</h3>
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Guía de cuidados de productos</a></li>
+                    <li><a href="#">Condiciones de Compra</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

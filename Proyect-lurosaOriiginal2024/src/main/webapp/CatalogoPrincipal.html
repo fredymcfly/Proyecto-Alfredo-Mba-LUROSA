@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyecto </title>
+    <link rel="stylesheet" href="./css/CatalogoPrincipal.css">
+</head>
+<body>
+
+    <!-- Incicio mi pagina con el encabezado -->
+    <header class="header">
+    <!-- -->    
+        <div class="menu container">
+            <a href="./CatalogoPrincipal.html" class="logo">LUROSA</a>
+            <input type="checkbox" id="menu">
+    <!-- Creo una etiqueta menu -->        
+                <label for="menu">
+                    <img src="./imagenes/menu.png" class="menu-icono" alt="menu">
+                </label>
+
+    <!-- Creamos la navegación de las diferentes paginas que creare más a delante-->
+                <nav class="navbar">
+                    <ul>
+                        <!--la parte de iniciar sesion te lleva a logeo donde pondras los credenciales
+                        y sabremos si eres usuario cliente o admininistrador-->
+                        <li><a href="./IniciarSesion.html">Iniciar sesión</a></li>                       
+                        <li><a href="./CatalogoSegundario.html">Catalogo</a></li>   
+                        <li><a href="./Nosotros.html">Nosotros</a></li>   
+                        <li><a href="./Registro.html">Crear cuenta</a></li>
+                       
+
+                     </ul>
+
+                </nav>
+                <div>
+                        <ul>
+                            <li class="submenu">
+                                <img src="./imagenes/car.svg" id="img-carrito" alt="carrito">
+        
+    <!--Creamos un div con la intención de generar un carrito de compras aqui crearemos una pagina nueva donde 
+    si hay cosas en el carro saldra listado si no habra un mensaje que pondrea *seguir comprando t te mandara a 
+    la pagina principla. -->
+                                <div id="carrito">
+                                    <table id="lista-carrito">
+                                        <thead>
+                                            <tr>
+                                                <th>Imagen</th>
+                                                <th>Nombre</th>
+                                                <th>Precio</th>
+                                    </tr>
+                        </thead>
+
+                    <tbody></tbody>
+                 </table>
+                 <a href="#" id="Vaciar carrito" class="btn-2">Vaciar carrito</a>
+
+                        </div>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="header-content conteiner" >
+    
+    <!-- creamos el div para la imagencorporativa -->
+        <div class="header-img">
+            <img src="./imagenes/lurosafotoperfil.jpg" alt="">
+
+        </div>
+        <!-- aqui lanzamos nuestro aninco de novedades -->
+        <div class="header-txt">
+            <h1>Ofertas especiales</h1>
+            <p>Estrena los mejores bolsos este primavera verano </p>
+            <a href="#" class="btn-1">Información</a>
+        </div>
+    </div>
+
+ </header>
+   <!-- creamos los-->
+ <section class="ofert conteiner">
+   <div class="ofert-1">
+        <div class="ofert-img">
+            <img src="./imagenes/7A3E2180-AB34-44B4-BF37-10076A57ED21.jpeg" alt="">
+        </div>
+        
+        <div class="ofert-txt">
+            <h3>Producto 1</h3>
+            <a href="" class="btn-2">informacion</a>
+
+        </div>
+    
+   </div>
+
+
+   <div class="ofert-1">
+    <div class="ofert-img">
+        <img src="./imagenes/AB983113-0027-4605-A897-01B5DDE0173C.jpg" alt="">
+    </div>
+
+    <div class="ofert-txt">
+        <h3>Producto 2</h3>
+        <a href="#" class="btn-2">informacion</a>
+
+    </div>
+
+</div>
+
+
+<div class="ofert-1">
+    <div class="ofert-img">
+        <img src="./imagenes/E5DF62CC-E5A2-4BBE-83EE-2169590FC780.JPG" alt="">
+    </div>
+
+    <div class="ofert-txt">
+        <h3>Producto 3</h3>
+        <a href="#" class="btn-2">informacion</a>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- contenido principal de la pagina-->
+
+<main class="products conteiner" id="lista-1">
+
+    <h2>Productos</h2>
+<!-- creamos los div de los productos -->
+    <div class="product-content">
+
+            
+        <div class="product">
+
+            <img src="./imagenes/Captura de pantalla 2024-05-10 101516.png" alt="">
+            <div class="products-txt">
+                 <h3>Prueba1</h3>
+                    <p>Calidad premium</p>
+                    <p class="Precio">200 €</p>
+                    <a href="./NuevoPedido.html?idProducto=1" class="agregar-carrito btn-2" data-id="1">Comprar</a>
+            </div>
+        </div>
+
+
+        <div class="product">
+
+            <img src="./imagenes/Captura de pantalla 2024-05-10 131922.png" alt="">
+            <div class="products-txt">
+                <h3>Elisiyun 2</h3>
+                <p>calidad premiun</p>
+                <p class="Precio">250 €</p>
+                <a href="./NuevoPedido.html?idProducto=2" class="agregar-carrito btn-2" data-id="1">Comprar</a>
+            
+            </div>
+        </div>
+
+        
+        <div class="product">
+
+            <img src="./imagenes/Captura de pantalla 2024-05-10 131954.png" alt="">
+            <div class="products-txt">
+                <h3>Elisiyun 3</h3>
+                <p>calidad premiun</p>
+                <p class="Precio">190 €</p>
+                <a href="./NuevoPedido.html?idProducto=3" class="agregar-carrito btn-2" data-id="2">Comprar</a>
+            
+            </div>
+        </div>
+
+
+        <div class="product">
+
+            <img src="./imagenes/image_6483441 (2).JPG" alt="">
+            <div class="product-txt">
+                <h3>Elisiyun</h3>
+                <p>calidad premiun</p>
+                <p class="Precio">$200</p>
+                <a href="#" class="agregar-carrito btn-2" data-id="4">Comprar</a>
+            
+            </div>
+        </div>
+
+
+        <div class="product">
+
+            <img src="./imagenes/image_6483441 (4).JPG" alt="">
+            <div class="products-txt">
+                <h3>Elisiyun</h3>
+                <p>calidad premiun</p>
+                <p class="Precio">$200</p>
+                <a href="#" class="agregar-carrito btn-2" data-id="5">Comprar</a>
+            
+            </div>
+        </div>
+
+       
+    </div>
+
+
+</main>
+
+
+            <section class="icons container">
+
+                <div class="icon-1">
+                    <div class="icon-img">
+                        <img src="./imagenes/i1.svg" alt="">
+                    </div>
+                        <div class="icon-txt">
+                        <h3>Lorem ipsum dolod sit</h3>
+                        <p>
+                        toda la mejor ropa de toda españa en luroxas
+
+                        </p>
+                    </div>
+                </div>
+
+            
+                <div class="icon-1">
+                    <div class="icon-img">
+                        <img src="./imagenes/i2.svg" alt="">
+                    </div>
+                        <div class="icon-txt">
+                        <h3>Lorem ipsum dolod sit</h3>
+                        <p>
+                        toda la mejor ropa de toda españa en luroxas
+
+                        </p>
+                    </div>
+                </div>
+
+
+                
+                <div class="icon-1">
+                    <div class="icon-img">
+                        <img src="./imagenes/i3.svg" alt="">
+                    </div>
+                        <div class="icon-txt">
+                        <h3>Lorem ipsum dolod sit</h3>
+                        <p>
+                        toda la mejor ropa de toda españa en luroxas
+
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </section>
+
+
+            
+            <section class="blog container">
+
+    <div class="blog-1">
+    <img src="./imagenes/leather-craft-3727997_640.jpg" alt="">
+    <h3>Blog 1 </h3>
+    <p>
+        ¡Bienvenidos a nuestro blog de artículos artesanales!
+
+Aquí encontrarás una cuidadosa selección de piezas únicas, creadas con pasión y dedicación por talentosos artesanos de todo el mundo. Desde elegantes joyas hasta hermosas piezas de cerámica y textiles exquisitamente tejidos, cada artículo cuenta una historia de habilidad y creatividad.
+
+Explora nuestra colección para descubrir la belleza de lo hecho a mano y el encanto de lo auténtico. Cada artículo es una expresión de la singularidad y el cuidado que solo el trabajo manual puede ofrecer.
+
+Sumérgete en el mundo de la artesanía y encuentra el regalo perfecto para ti o tus seres queridos, hecho con amor y cuidado por manos expertas. ¡Gracias por apoyar a los artesanos y por elegir lo auténtico!
+    </p>
+</div>
+
+
+           
+<div class="blog-1">
+    <img src="./imagenes/pocket-1609281_640.jpg" alt="">
+    <h3>Blog 2 </h3>
+    <p>
+        ¡Bienvenidos a nuestro blog de artículos artesanales!
+
+Aquí encontrarás una cuidadosa selección de piezas únicas, creadas con pasión y dedicación por talentosos artesanos de todo el mundo. Desde elegantes joyas hasta hermosas piezas de cerámica y textiles exquisitamente tejidos, cada artículo cuenta una historia de habilidad y creatividad.
+
+Explora nuestra colección para descubrir la belleza de lo hecho a mano y el encanto de lo auténtico. Cada artículo es una expresión de la singularidad y el cuidado que solo el trabajo manual puede ofrecer.
+
+Sumérgete en el mundo de la artesanía y encuentra el regalo perfecto para ti o tus seres queridos, hecho con amor y cuidado por manos expertas. ¡Gracias por apoyar a los artesanos y por elegir lo auténtico!
+    </p>
+</div>
+
+           
+<div class="blog-1">
+    <img src="./imagenes/sew-8353303_640.jpg" alt="">
+    <h3>Blog 3 </h3>
+    <p>
+        ¡Bienvenidos a nuestro blog de artículos artesanales!
+
+Aquí encontrarás una cuidadosa selección de piezas únicas, creadas con pasión y dedicación por talentosos artesanos de todo el mundo. Desde elegantes joyas hasta hermosas piezas de cerámica y textiles exquisitamente tejidos, cada artículo cuenta una historia de habilidad y creatividad.
+
+Explora nuestra colección para descubrir la belleza de lo hecho a mano y el encanto de lo auténtico. Cada artículo es una expresión de la singularidad y el cuidado que solo el trabajo manual puede ofrecer.
+
+Sumérgete en el mundo de la artesanía y encuentra el regalo perfecto para ti o tus seres queridos, hecho con amor y cuidado por manos expertas. ¡Gracias por apoyar a los artesanos y por elegir lo auténtico!
+    </p>
+</div>
+
+
+
+ </section>
+
+ <footer class="footer">
+
+    <div class="footer-content container">
+        <div class="link">
+            <h3>loren</h3>
+            <ul>
+                <li><a href="#">Conctacto</a></li>
+                <li><a href="#">Sobre Nostros</a></li>
+                <li><a href="#">Guia de cuidados de productos</a></li>
+                <li><a href="#">Condiciones de Compra</a></li>
+            </ul>
+        </div>
+        
+
+        
+        <div class="link">
+            <h3>loren</h3>
+            <ul>
+                <li><a href="#">Política de Devoluciones</a></li>
+                <li><a href="#">Aviso Legal Política de Privacidad</a></li>
+                <li><a href="#">Términos de Servio</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+        
+    
+        
+            <div class="link">
+                <h3>loren</h3>
+                <ul>
+                    <li><a href="#">Copyright 2024. Todos los derechos reservados Lurosa S.A
+                        <br> Developed Celedonio Alfredo Mba</a></li>
+                    
+                </ul>
+            </div>
+            
+
+        
+       
+        
+    </div>
+
+
+
+
+ </footer>
+
+    <h1></h1>
+    <script src="Scrip.js"></script>
+</body>
+</html>
