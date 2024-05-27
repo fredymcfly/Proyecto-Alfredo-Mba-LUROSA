@@ -70,6 +70,7 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 				user.setNombreUsuario(nombre_Usuario);				
 				isAdmin = filas.getBoolean("EsAdmin");		
 				user.setEsadmin(isAdmin);
+				user.setId(filas.getInt("id"));
 			}
 			
 			ps.close();

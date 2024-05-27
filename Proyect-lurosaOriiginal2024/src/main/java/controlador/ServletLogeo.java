@@ -63,16 +63,12 @@ public class ServletLogeo extends HttpServlet {
 			}
 			else
 			{
-				sesion = request.getSession();
 				
 				//Meto los datos que necesito dentro de la sesion, en este caso el id_Login y el is_Admin
-				sesion.setAttribute("id", respuestaModelo.getId());
-				
+				//sesion.setAttribute("id", respuestaModelo.getId());				
 				sesion.setAttribute("idUsuario",respuestaModelo.getId());
-				//PARA PREGUNTAR POR UNA SESION VALIDA
-				//sesion.getAttribute("idUsuario");
-				
-				//si el 
+				sesion.setAttribute("EsAdmin",respuestaModelo.isEsadmin());
+								
 				if(respuestaModelo.isEsadmin())
 				{ // es administrador
 					response.sendRedirect("adminArea.html");

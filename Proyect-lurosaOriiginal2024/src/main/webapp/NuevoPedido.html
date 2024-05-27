@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Proyecto</title>
     <link rel="stylesheet" href="./css/compra.css">
+    <style>
+    .ocultar{
+    	display:none;
+    }
+    .disabled{
+	    opacity: 0.6;
+	    cursor: not-allowed;
+	    pointer-events: none;
+	}
+    </style>
     <script>
         function obtenerParametroDeURL(nombreParametro) {
             const parametros = new URLSearchParams(window.location.search);
@@ -14,19 +24,30 @@
         function leerProducto(idProducto) {
             fetch('ServletNuevoPedido?idProducto=' + idProducto)
             .then(response => response.json())    
-            .then(data => pintarDatosProducto(data));
+            .then(data => pintarDatosProducto(data))
+            .catch(error => {
+                    //throw(error);
+            	document.getElementById('bloque-sesion').classList.add("ocultar");            	
+            	document.getElementById('botonComprar').classList.add("disabled"); 
+                });
         }
 
         function pintarDatosProducto(data) {
         	if(data == null)
        		{
+        		document.getElementById('bloque-sesion').classList.add("ocultar");
+        		document.getElementById('botonComprar').classList.add("disabled");        		
        			location.href= "IniciarSesion.html";
        		}
         	else
        		{
+        		document.getElementById('nombreProductoSpan').innerHTML = data.nombreproducto;
+        		document.getElementById('botonComprar').classList.remove("disabled");
+        		document.getElementById('bloque-sesion').classList.remove("ocultar");
         		document.getElementById("nombreProducto").innerHTML = data.nombreproducto;
                 document.getElementById("precioProducto").innerHTML = data.precio + '<span> €</span>';
                 document.querySelector('input[name="idProducto"]').value = data.idProducto;
+                //
        		}
             
         }
@@ -56,9 +77,8 @@
                 </ul>
             </nav>
         </div>
-        <!-- Aquí se supone el cliente está logeado y puede cerrar sesión -->
-        <div class="user-session">
-            <a href="./perfil.html">Mi perfil</a>
+        <!-- Aquí se supone el cliente está logeado y puede cerrar sesión-->
+        <div class="user-session ocultar" id="bloque-sesion">
             <a href="ServletCerrarSesion">Cerrar sesión</a>
         </div>
     </header>
@@ -86,12 +106,12 @@
                     <input type="number" id="cantidad" name="cantidad" min="1" required>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Confirmar Compra" class="submit-btn">
+                    <input type="submit" value="Confirmar Compra" id="botonComprar" class="submit-btn">
                 </div>
             </form>
 
             <div>
-                <p><strong>Bolso Paulita ha sido cuidadosamente diseñado para adaptarse todas las necesidades de tu rutina diaria,</strong> proporcionando la combinación perfecta de comodidad, ligereza y estilo atemporal.
+                <p><strong><span id="nombreProductoSpan"></span> ha sido cuidadosamente diseñado para adaptarse todas las necesidades de tu rutina diaria,</strong> proporcionando la combinación perfecta de comodidad, ligereza y estilo atemporal.
                 Este versátil bolso bandolera se distingue por su diseño sencillo que se integra sin esfuerzo en cualquier estilo. Tanto la correa para el hombro como el asa son ajustables, permitiéndote personalizar tu experiencia de uso para adaptarse a tus preferencias y necesidades.</p>
             </div>
             <!-- Características del bolso de cuero -->

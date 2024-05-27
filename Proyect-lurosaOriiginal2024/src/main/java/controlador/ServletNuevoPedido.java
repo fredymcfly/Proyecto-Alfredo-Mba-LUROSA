@@ -39,6 +39,7 @@ public class ServletNuevoPedido extends HttpServlet {
         	HttpSession sesion = request.getSession();
         	Object idUsuario = sesion.getAttribute("idUsuario");
         	
+        	//si el objeto idUsuario viene establecido, significa que el cliente ha hecho login
         	if(idUsuario != null)
         	{						
 				String idProducto = request.getParameter("idProducto");						
