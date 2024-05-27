@@ -34,7 +34,7 @@ public class ServletCerrarSesion extends HttpServlet {
 		HttpSession sesion = request.getSession();
 
 		sesion.invalidate();
-		response.sendRedirect("CerrarSesion.html");
+		response.sendRedirect("CatalogoPrincipal.html");
 	}
 	
 

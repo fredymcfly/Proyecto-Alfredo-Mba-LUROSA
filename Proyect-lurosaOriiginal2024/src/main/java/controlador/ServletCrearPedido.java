@@ -70,8 +70,7 @@ public class ServletCrearPedido extends HttpServlet {
 	    		
 	    		String estado = "PENDIENTE ENVIO";
 	    		
-	    		int idCliente = clienteLogado.getIdCliente();
-	    		
+	    		int idCliente = clienteLogado.getIdCliente();	    		
 	    		
 	    		//se crea el modelo de negocio de Pedido enviando los datos al constructor
 	    		Pedido modeloPedido = new Pedido (idCliente, idProducto,cantidad, estado, fechaPedido); 
