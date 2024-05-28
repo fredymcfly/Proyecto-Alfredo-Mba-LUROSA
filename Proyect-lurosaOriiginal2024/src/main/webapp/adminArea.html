@@ -75,6 +75,7 @@
             html += "<th>Stock</th>";                
             html += "<th>MODIFICAR</th>";
             html += "<th>ELIMINAR</th>";
+            html += "<th>INSERTAR PRODUCTO</th>"
             html += "</tr>";
         
         for(var i=0; i<datos.length; i++) {
@@ -91,6 +92,8 @@
                     <button type="submit">Eliminar</button>
                 </form>
             </td>
+            <td><a href='CrearProducto.html?'idProducto=${datos[i].idProducto}'><button type="button">INSERTAR PRODUCTO</button></a></td>
+            <td>        
             </tr>`;
         }
         
@@ -152,7 +155,7 @@
             html += "<th>Nombre Producto</th>";
             html += "<th>Descripcion</th>";
             html += "<th>Precio</th>";
-            html += "<th>Stock</th>";                
+            html += "<th>Stock</th>";  
             html += "<th>MODIFICAR</th>";
             html += "<th>ELIMINAR</th>";
             html += "</tr>";
@@ -197,6 +200,7 @@
                 <li><a href="#" onclick="cargarCategorias()">Categorías</a></li>
                 <li><a href="#" onclick="cargarClientes()">Clientes</a></li>
                 <li><a href="#" onclick="cargarPedidos()">Pedidos</a></li>
+                
             </ul>
         </nav>
     </header>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyecto</title>
+    <link rel="stylesheet" href="./css/compra.css">
+    <style>
+    .ocultar{
+    	display:none;
+    }
+    .disabled{
+	    opacity: 0.6;
+	    cursor: not-allowed;
+	    pointer-events: none;
+	}
+    </style>
+    <script>
+        function obtenerParametroDeURL(nombreParametro) {
+            const parametros = new URLSearchParams(window.location.search);
+            return parametros.get(nombreParametro);
+        }
+
+        function leerProducto(idProducto) {
+            fetch('ServletNuevoPedido?idProducto=' + idProducto)
+            .then(response => response.json())    
+            .then(data => pintarDatosProducto(data))
+            .catch(error => {
+                    //throw(error);
+            	document.getElementById('bloque-sesion').classList.add("ocultar");            	
+            	document.getElementById('botonComprar').classList.add("disabled"); 
+                });
+        }
+
+        function pintarDatosProducto(data) {
+        	if(data == null)
+       		{
+        		document.getElementById('bloque-sesion').classList.add("ocultar");
+        		document.getElementById('botonComprar').classList.add("disabled");        		
+       			location.href= "IniciarSesion.html";
+       		}
+        	else
+       		{
+        		document.getElementById('nombreProductoSpan').innerHTML = data.nombreproducto;
+        		document.getElementById('botonComprar').classList.remove("disabled");
+        		document.getElementById('bloque-sesion').classList.remove("ocultar");
+        		document.getElementById("nombreProducto").innerHTML = data.nombreproducto;
+                document.getElementById("precioProducto").innerHTML = data.precio + '<span> €</span>';
+                document.querySelector('input[name="idProducto"]').value = data.idProducto;
+                //
+       		}
+            
+        }
+
+        window.onload = function(){
+            var idProducto = obtenerParametroDeURL("idProducto");
+            leerProducto(idProducto);
+        }
+    </script>
+</head>
+<body>
+    <!-- Inicio de la página con el encabezado -->
+    <header class="header">
+        <div class="menu container">
+            <a href="./CatalogoPrincipal.html" class="logo">LUROSA</a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="./imagenes/menu.png" class="menu-icono" alt="menu">
+            </label>
+            <!-- Navegación de las diferentes páginas -->
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Mujer</a></li>
+                    <li><a href="#">Hombre</a></li>
+                    <li><a href="./CatalogoPrincipal.html">Catálogo</a></li>
+                    <li><a href="./Nosotros.html">Nosotros</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Aquí se supone el cliente está logeado y puede cerrar sesión-->
+        <div class="user-session ocultar" id="bloque-sesion">
+            <a href="ServletCerrarSesion">Cerrar sesión</a>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <div class="main-content container">
+        <!-- Foto del producto -->
+        <div class="product-image">
+            <img src="./imagenes/Captura de pantalla 2024-05-10 131922.png" alt="Bolso de Cuero">
+        </div>
+
+        <!-- Formulario de compra -->
+        <div class="form-container">
+            <h2>Confirmación de Compra</h2>
+            <form action="ServletCrearPedido" method="post">
+                <input type="hidden" name="idProducto" >
+                <strong>
+                    <p id="nombreProducto"></p>
+                    <p id="precioProducto"></p>
+                </strong>
+                <p>Impuestos incluidos.</p><br>
+                
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" min="1" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Confirmar Compra" id="botonComprar" class="submit-btn">
+                </div>
+            </form>
+
+            <div>
+                <p><strong><span id="nombreProductoSpan"></span> ha sido cuidadosamente diseñado para adaptarse todas las necesidades de tu rutina diaria,</strong> proporcionando la combinación perfecta de comodidad, ligereza y estilo atemporal.
+                Este versátil bolso bandolera se distingue por su diseño sencillo que se integra sin esfuerzo en cualquier estilo. Tanto la correa para el hombro como el asa son ajustables, permitiéndote personalizar tu experiencia de uso para adaptarse a tus preferencias y necesidades.</p>
+            </div>
+            <!-- Características del bolso de cuero -->
+            <div class="product-features">
+                <h3>Características destacadas</h3>
+                <ul>
+                    <li>Material: Cuero genuino</li>
+                    <li>Color: Marrón</li>
+                    <li>Dimensiones: 30cm x 20cm x 10cm</li>
+                    <li>Capacidad: 15L</li>
+                    <li>Compartimentos: 3 internos, 2 externos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="link">
+                <h3>Loren</h3>
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Guía de cuidados de productos</a></li>
+                    <li><a href="#">Condiciones de Compra</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

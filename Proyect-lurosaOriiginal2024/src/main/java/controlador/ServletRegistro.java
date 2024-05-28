@@ -90,6 +90,7 @@ public class ServletRegistro extends HttpServlet {
 			Cliente miCliente = new Cliente(respuestaModelo.getId(), nombre,apellido,direccion,provincia,pais,poblacion,telefono);
 			Cliente resultadoRegistro = miCliente.insertar();
 			
+			
 			//recibimos la respuesta final del resultado de insertar un usuario
 			//si es true ha sido exito y si no ha fallado el registro
 			

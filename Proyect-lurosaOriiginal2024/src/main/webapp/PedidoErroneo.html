@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Producto AreaAdmin  - LUROSA</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <title>Sobre Nosotros - LUROSA</title>
+    <link rel="stylesheet" href="./css/Nosotros.css">
 </head>
 <body>
     <!-- Inicio de la página con el encabezado -->
     <header class="header">
         <div class="menu container">
-            <a href="#" class="logo">LUROSA</a>
+            <a href="./CatalogoPrincipal.html" class="logo">LUROSA</a>
             <input type="checkbox" id="menu">
             <label for="menu">
                 <img src="./imagenes/menu.png" class="menu-icono" alt="menu">
@@ -19,36 +19,38 @@
                 <ul>
                     <li><a href="./login.html">Mujer</a></li>
                     <li><a href="./registro.html">Hombre</a></li>
-                    <li><a href="./CatalogoPrincipal.html">Catálogo</a></li>
+                    <li><a href="./CatalogoSegundario.html">Catálogo</a></li>
                     <li><a href="./Nosotros.html">Nosotros</a></li>
                 </ul>
             </nav>
         </div>
+        <div class="user-session">
         
+            <a href="./perfil.html">Mi perfil</a>
+            <a href="./logout.html">Cerrar sesión</a>
+        </div>
     </header>
 
-    <!-- Formulario de inicio de sesión -->
+    <!-- Contenido principal -->
     <main class="main-content container">
-        <form action="ServletCrearProducto" method="post">
-            <h2>Crear Producto</h2>
-            <input type="text" name="nombreProducto" placeholder="Nombre" >
-            <input type="text" name="descripcion" placeholder="Descripcion" >
-            <input type="text" name="precio" placeholder="Precio" >
-            <input type="text" name="stock" placeholder="Stock" >
-            
-            
-            <input class="btn" type="submit" value="Guardar">
-            
-                
+        <section class="about-us">
+            <h2>PEDIDO  NO REALIZADO :(  </h2>
+            <div class="history">
+             
+        </section>
+
+        <section class="images">
+            <div class="image-container">
+                <img src="./imagenes/fallido.png" alt="Nuestro Taller">
            
-        </form>
+        </section>
     </main>
 
     <!-- Pie de página -->
     <footer class="footer">
         <div class="footer-content container">
             <div class="link">
-                <h3>Loren</h3>
+               
                 <ul>
                     <li><a href="#">Contacto</a></li>
                     <li><a href="#">Sobre Nosotros</a></li>
