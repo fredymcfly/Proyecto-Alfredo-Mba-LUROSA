@@ -2,6 +2,8 @@ package modelo;
 
 import java.sql.SQLException;
 
+import com.google.gson.Gson;
+
 import Dao.PedidoDao;
 import Dao.ProductoDao;
 
@@ -12,7 +14,24 @@ public class Pedido {
  private int cantidad;
  private String Estado;
  private String fecha;
+ 
+ 
+ 
+ public Pedido() {
+	 
+ }
+ 
+ 
 
+ public Pedido(int idPedidoParam, int idClienteParam,int idProductoParam, int cantidadParam, String estadoParam, String fechaParam)
+ {
+	 idPedido = idPedidoParam;
+	 idCliente = idClienteParam;
+	 idProducto = idProductoParam;
+	cantidad = 	cantidadParam;
+	Estado = estadoParam;
+	fecha = fechaParam;	 
+ }
  public Pedido(int idClienteParam,int idProductoParam, int cantidadParam, String estadoParam, String fechaParam)
  {
 	 idCliente = idClienteParam;
@@ -95,7 +114,28 @@ public  Pedido insertar() throws SQLException {
  }
  
 
+public String listarPedidos() throws SQLException {
+	String json = "";
+	Gson objetoGson = new Gson();
+	PedidoDao resultado = new PedidoDao();
+	json = objetoGson.toJson(resultado.listar());
+	return json;
+}
 
+public String leerPedido(int idProducto) throws SQLException {
+	String json = "";
+	Gson objetoGson = new Gson();
+	PedidoDao resultado = new PedidoDao();
+	json = objetoGson.toJson(resultado.listar());
+	return json;
+} 
+
+
+public Pedido editarProducto() throws SQLException {
+	
+	 PedidoDao editar = new PedidoDao();
+		return editar.editarPedido(this);
+	}
 }
 
 

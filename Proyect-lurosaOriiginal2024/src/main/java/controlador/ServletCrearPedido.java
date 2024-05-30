@@ -80,11 +80,11 @@ public class ServletCrearPedido extends HttpServlet {
     			//controlamos si el pedido se ha creado correctamente
     			if(miPedidoNuevo == null)
     			{
-    				response.sendRedirect("pedidoErroneo.html");
+    				response.sendRedirect("PedidoErroneo.html");
     			}
     			else
     			{
-    				response.sendRedirect("pedidoRealizado.html");
+    				response.sendRedirect("PedidoExito.html");
     				System.out.println(miPedidoNuevo.toString());	
     			}	
     		} catch (SQLException e) {

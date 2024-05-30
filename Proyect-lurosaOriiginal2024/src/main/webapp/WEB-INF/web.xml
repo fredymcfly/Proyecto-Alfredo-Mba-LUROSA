@@ -179,4 +179,34 @@
     <servlet-name>ServletCerrarSesion</servlet-name>
     <url-pattern>/ServletCerrarSesion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletListarPedido</display-name>
+    <servlet-name>ServletListarPedido</servlet-name>
+    <servlet-class>controlador.ServletListarPedido</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletListarPedido</servlet-name>
+    <url-pattern>/ServletListarPedido</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletEditarPedido</display-name>
+    <servlet-name>ServletEditarPedido</servlet-name>
+    <servlet-class>controlador.ServletEditarPedido</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEditarPedido</servlet-name>
+    <url-pattern>/ServletEditarPedido</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletActualizarPedido</display-name>
+    <servlet-name>ServletActualizarPedido</servlet-name>
+    <servlet-class>controlador.ServletActualizarPedido</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarPedido</servlet-name>
+    <url-pattern>/ServletActualizarPedido</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -96,7 +96,7 @@ public class ServletRegistro extends HttpServlet {
 			
 			if(resultadoRegistro != null)
 			{
-				response.sendRedirect("adminArea.html");
+				response.sendRedirect("CatalogoPrincipal.html");
 			}
 			else
 			{

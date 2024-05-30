@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import modelo.Pedido;
 import modelo.Producto;
 
 import java.io.IOException;
@@ -12,15 +13,15 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class ServetLeerProducto
+ * Servlet implementation class ServletActualizarPedido
  */
-public class ServletGuardarProducto extends HttpServlet {
+public class ServletActualizarPedido extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletGuardarProducto() {
+    public ServletActualizarPedido() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,28 +29,24 @@ public class ServletGuardarProducto extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    /*
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub		
-			
-	}
-		/*
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
 		try {
 			PrintWriter out = response.getWriter();
 			// recibo todos los parrametros que me llegan del formulario editar
-			int idProducto = Integer.parseInt(request.getParameter("idproducto"));			
-			String nombreProducto = request.getParameter("nombreproducto");
-			String descripcion = request.getParameter("descripcion");
-			int precio = Integer.parseInt(request.getParameter("precio"));
-			int stock = Integer.parseInt(request.getParameter("stock"));			
+			int idPedido = Integer.parseInt(request.getParameter("idProducto"));	
+			int idCliente = Integer.parseInt(request.getParameter("precio"));
+			int cantidad = Integer.parseInt(request.getParameter("precio"));
+			String estado = request.getParameter("nombreProducto");
+			String fecha = request.getParameter("descripcion");
+			int idProducto = Integer.parseInt(request.getParameter("stock"));			
 			
-			Producto miProducto = new Producto(idProducto,1, nombreProducto,descripcion, precio,stock);
-			Producto productoActualizado = miProducto.editarProducto();
+			
+			// CREA CONSTRUCTOR 
+			Pedido miPedido = new Pedido(idProducto,idCliente,cantidad,estado,fecha,idProducto);
+			Pedido productoActualizado = miPedido.editarProducto();
 			if(productoActualizado == null)
 			{
 				//out.print("KO");
@@ -64,6 +61,14 @@ public class ServletGuardarProducto extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

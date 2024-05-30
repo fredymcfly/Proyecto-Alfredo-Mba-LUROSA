@@ -42,7 +42,7 @@
             <td>${datos[i].pais}</td>
             <td>${datos[i].poblacion}</td>
             <td>${datos[i].telefono}</td>
-            <td><a href='editarCliente.html?idCliente=${datos[i].idCliente}'><button type="submit">Modificar</button></a></td>
+            <td><a href='EditarNewCliente.html?idCliente=${datos[i].idCliente}'><button type="submit">Modificar</button></a></td>
             <td>        
                 <form onsubmit="return confirmarEliminacion();" action="ServletEliminarCliente" method="post">
                     <input type="hidden" name="idCliente" value="${datos[i].idCliente}">
@@ -71,8 +71,8 @@
             html += "<th>idProducto</th>";                
             html += "<th>Nombre Producto</th>";
             html += "<th>Descripcion</th>";
-            html += "<th>Precio</th>";
-            html += "<th>Stock</th>";                
+            html += "<th>Stock</th>";
+            html += "<th>Precio</th>";                
             html += "<th>MODIFICAR</th>";
             html += "<th>ELIMINAR</th>";
             html += "<th>INSERTAR PRODUCTO</th>"
@@ -151,11 +151,11 @@
         let html = "<table class='datos-pedido'>";            
             html += "<tr>";
             html += "<th>idPedido</th>";    
-            html += "<th>IdCategoria</th>";
-            html += "<th>Nombre Producto</th>";
-            html += "<th>Descripcion</th>";
-            html += "<th>Precio</th>";
-            html += "<th>Stock</th>";  
+            html += "<th>idCliente</th>";
+            html += "<th>idProducto</th>";
+            html += "<th>Cantidad</th>";
+            html += "<th>Estado</th>";
+            html += "<th>Fecha</th>";  
             html += "<th>MODIFICAR</th>";
             html += "<th>ELIMINAR</th>";
             html += "</tr>";
@@ -163,11 +163,11 @@
         for(var i=0; i<datos.length; i++) {
             html += `<tr>
             <td>${datos[i].idPedido}</td>
-            <td>${datos[i].idCategoria}</td>
-            <td>${datos[i].nombreProducto}</td>
-            <td>${datos[i].descripcion}</td>
-            <td>${datos[i].precio}</td>
-            <td>${datos[i].stock}</td>                
+            <td>${datos[i].idCliente}</td>
+            <td>${datos[i].idProducto}</td>
+            <td>${datos[i].cantidad}</td>
+            <td>${datos[i].Estado}</td>
+            <td>${datos[i].fecha}</td>                
             <td><a href='editarPedido.html?idPedido=${datos[i].idPedido}'><button type="submit">Modificar</button></a></td>
             <td>        
                 <form onsubmit="return confirmarEliminacion();" action="ServletEliminarPedido" method="post">

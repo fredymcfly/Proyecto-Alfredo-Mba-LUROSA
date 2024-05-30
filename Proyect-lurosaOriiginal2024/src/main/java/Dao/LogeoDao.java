@@ -1,5 +1,9 @@
 package Dao;
 import modelo.Usuario;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,6 +51,22 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 	 return instance;
 	}
 	
+	private String getMD5(String input) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] messageDigest = md.digest(input.getBytes());
+			BigInteger number = new BigInteger(1, messageDigest);
+			String hashtext = number.toString(16);
+
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext;
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public Usuario login(Usuario user) {
 		try {
 			
@@ -54,8 +74,10 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 			//OBTENEMOS TODOS LOS CAMPOS 
 			PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE nombreUsuario = ? and contrasena = ?");
 		
+			String passMD5 = getMD5(user.getContrasena());
+			
 			ps.setString(1, user.getNombreUsuario());			//
-			ps.setString(2, user.getContrasena());
+			ps.setString(2, passMD5);
 			// utilizamos execute para realizar el envio que solo devuelve el numero de tuplas afectadas
 			ResultSet filas= ps.executeQuery();
 			

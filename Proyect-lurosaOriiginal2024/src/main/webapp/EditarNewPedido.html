@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Editar cliente</title>
-<link rel="stylesheet" href="./css/logeo.css">
+<link rel="stylesheet" href="/Css/EditarNewProducto.css">
 
 <script type="text/javascript">
 	
@@ -19,7 +19,7 @@
 	
 	function llamada(idCliente){
 		
-		//URL del servlet y parámetro		
+		//URL del servlet y parÃ¡metro		
 		let url = 'ServletLeerCliente?idCliente=' + idCliente;
 		
 		//hacemos la llamada al servlet de lectura de cliente
@@ -52,8 +52,8 @@
 		<input type='text' name='apellido' value='${cliente.apellido}' placeholder='APELLIDO'>
 		<input type='text' name='direccion' value='${cliente.direccion}' placeholder='DIRECCION'>
 		<input type='text' name='provincia' value='${cliente.provincia}' placeholder='PROVINCIA'>
-		<input type='text' name='pais' value='${cliente.pais}' placeholder='PAÍS'>
-		<input type='text' name='poblacion' value='${cliente.poblacion}' placeholder='POBLACIÓN'>
+		<input type='text' name='pais' value='${cliente.pais}' placeholder='PAÃS'>
+		<input type='text' name='poblacion' value='${cliente.poblacion}' placeholder='POBLACIÃ“N'>
 		<input type='text' name='telefono' value='${cliente.telefono}' placeholder='TELEFONO'>`;
 		
 		document.getElementById("editarClientes").innerHTML = html;
@@ -67,7 +67,7 @@
 </script>
 </head>
 <body>
-	 		<form action="ServletGuardarProducto" method="post">
+	 		<form action="ServletGuardarCliente" method="post">
             <h2>Editar CLIENTE</h2>
             <HR/>
             

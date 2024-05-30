@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Pedido;
 import modelo.Producto;
@@ -74,6 +75,71 @@ public Pedido insertar(Pedido pedi) {
 		
 	}
 
+
+// LISTAR PEDIDO 
+
+
+	public ArrayList<Pedido>listar() throws SQLException{
+		
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM pedidos");
+		ResultSet rs =ps.executeQuery();
+		
+		ArrayList<Pedido>result=null;
+		
+		while(rs.next()) {
+			
+			// preguntamos si el arraylis este nulo no este inicializado 
+			
+			if (result==null) {
+				result= new ArrayList<>();
+				
+			}
+		result.add(new Pedido (rs.getInt("idPedido"),rs.getInt("idCliente"),rs.getInt("idProducto"),rs.getInt("cantidad"),rs.getString("estado"),rs.getString("fecha")));
+		}
+		
+		
+		return result;
+	}
+	
+	
+
+    public Pedido editarPedido(Pedido pedi) {
+		
+		//ponemos bloque try-catch para controlar cualquier excepcion de sql 
+		try {
+		
+			String query = "UPDATE pedidos SET idCliente = ?, idProducto = ?, cantidad = ?, estado = ?, fecha = ? WHERE idPedido = ?";
+
+			
+			PreparedStatement ps = con.prepareStatement(query);
+
+			// ponemos los parametros que desamos que guarden en la bd que el usuario introduzca 
+			// que salen de nuestra clase creada 
+			ps.setInt(1, pedi.getidPedido());
+			ps.setInt(2, pedi.getidCliente());
+			ps.setInt(3, pedi.getidProducto());
+			ps.setInt(4, pedi.getCantidad());
+			ps.setString(5, pedi.getEstado());
+			ps.setString(6,pedi.getFecha());
+			
+			// utilizamos execute para realizar el envio que solo devuelve el numero de tuplas afectadas
+			int filas = ps.executeUpdate();
+			
+			if(filas<=0)
+			{
+				pedi = null;
+			}
+			
+			ps.close();
+			
+			//si finaliza correctamente la update, devolvemos producto
+			return pedi;
+		
+		} catch (SQLException e) {
+			//si se provoca algun error en la update , devolvemos false
+			return pedi;
+		}
+	}
 }
 
 

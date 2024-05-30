@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Editar cliente</title>
-<link rel="stylesheet" href="./css/logeo.css">
+<title>Editar Producto</title>
+<link rel="stylesheet" href="./css/login.css">
 
 <script type="text/javascript">
 	
@@ -17,10 +17,10 @@
 	  return parametros.get(nombreParametro);
 	}
 	
-	function llamada(idCliente){
+	function llamada(idProducto){
 		
 		//URL del servlet y parámetro		
-		let url = 'ServletLeerCliente?idCliente=' + idCliente;
+		let url = 'ServletLeerProducto?idProducto=' + idProducto;
 		
 		//hacemos la llamada al servlet de lectura de cliente
 		fetch(url, opciones)
@@ -32,7 +32,7 @@
 		  })
 		  .then(data => {
 		    // Manejar la respuesta del servlet
-		    mostrarCliente(data);
+		    mostrarProducto(data);
 		    //console.log(data);
 		  })
 		  .catch(error => {
@@ -44,34 +44,31 @@
 		//.then(data => pintarTabla(data))
 	}
 	
-	function mostrarCliente(cliente)
+	function mostrarProducto(producto)
 	{
-		let html = `<input type='hidden' name='idUsuario' value='${cliente.idUsuario}' >		
-		<input type='hidden' name='idCliente' value='${cliente.idCliente}' >
-		<input type='text' name='nombre' value='${cliente.nombre}' placeholder='NOMBRE'>
-		<input type='text' name='apellido' value='${cliente.apellido}' placeholder='APELLIDO'>
-		<input type='text' name='direccion' value='${cliente.direccion}' placeholder='DIRECCION'>
-		<input type='text' name='provincia' value='${cliente.provincia}' placeholder='PROVINCIA'>
-		<input type='text' name='pais' value='${cliente.pais}' placeholder='PAÍS'>
-		<input type='text' name='poblacion' value='${cliente.poblacion}' placeholder='POBLACIÓN'>
-		<input type='text' name='telefono' value='${cliente.telefono}' placeholder='TELEFONO'>`;
+		let html = `<input type='hidden' name='idproducto' value='${producto.idProducto}' >
+		<input type='text' name='nombreproducto' value='${producto.nombreproducto}' placeholder='NOMBRE'>
+		<input type='text' name='descripcion' value='${producto.descripcion}' placeholder='DESCRIPCION'>
+		<input type='text' name='precio' value='${producto.precio}' placeholder='PRECIO'>
+		<input type='text' name='stock' value='${producto.stock}' placeholder='STOCK'>`;
 		
-		document.getElementById("editarClientes").innerHTML = html;
+		
+		document.getElementById("editarProducto").innerHTML = html;
 	}
 
 	window.onload = function(){
-	    const valorParametro = obtenerParametroDeURL('idCliente');	    
+	    const valorParametro = obtenerParametroDeURL('idProducto');	    
 		llamada(valorParametro);
 	};
 	
 </script>
 </head>
 <body>
-	 		<form action="ServletGuardarCliente" method="post">
-            <h2>Editar CLIENTE</h2>
+	 		<form action="ServletGuardarProducto" method="post">
+            <h2>Editar Producto</h2>
             <HR/>
             
-            <div id="editarClientes">
+            <div id="editarProducto">
            
             </div>            
             
