@@ -43,6 +43,13 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 	// en este bloque de codigo se hace el metodo silgenton en el cual  cuando llame al metodo 
 	//estatico de esta clase me devuelva propia clase para disponer despues todos sus metodos 
 	// sin tener que instanciar de nuevo 
+	
+	 /**
+     * Devuelve la instancia única de LogeoDao, implementando el patrón Singleton.
+     * 
+     * @return la instancia de LogeoDao.
+     * @throws SQLException si ocurre un error al crear la instancia.
+     */
 	public static LogeoDao getinstance() throws SQLException {
 	 if (instance==null) {
 		 instance= new LogeoDao();
@@ -50,7 +57,12 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 	 }
 	 return instance;
 	}
-	
+	 /**
+     * Genera el hash MD5 de una cadena de texto.
+     * 
+     * @param input la cadena de texto a hashear.
+     * @return el hash MD5 de la cadena de texto.
+     */
 	private String getMD5(String input) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -67,6 +79,12 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 		}
 	}
 	
+	/**
+     * Realiza el inicio de sesión del usuario.
+     * 
+     * @param user el usuario que intenta iniciar sesión.
+     * @return el usuario con los detalles completos si el inicio de sesión es exitoso, null en caso contrario.
+     */
 	public Usuario login(Usuario user) {
 		try {
 			
@@ -111,7 +129,12 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 			return user;
 		}
 	}
-	
+	 /**
+     * Inserta un nuevo usuario en la base de datos.
+     * 
+     * @param u el usuario a insertar.
+     * @return el usuario insertado con su ID asignado.
+     */
 	public Usuario insertar(Usuario u) {
 	
 		//ponemos bloque try-catch para controlar cualquier excepcion de sql 
@@ -149,7 +172,12 @@ En resumen, este código define una clase DaoLogin que tiene una conexión a la 
 	public void update() {
 		
 	}
-	
+	/**
+     * Elimina un usuario de la base de datos.
+     * 
+     * @param s el usuario a eliminar.
+     * @throws SQLException si ocurre un error durante la eliminación.
+     */
 	public static void elimLogin(Usuario s) throws SQLException {
 		String sql = "DELETE FROM usuarios WHERE id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);

@@ -45,7 +45,7 @@ public class ServletActualizarPedido extends HttpServlet {
 			
 			
 			// CREA CONSTRUCTOR 
-			Pedido miPedido = new Pedido(idProducto,idCliente,cantidad,estado,fecha,idProducto);
+			Pedido miPedido = new Pedido();
 			Pedido productoActualizado = miPedido.editarProducto();
 			if(productoActualizado == null)
 			{

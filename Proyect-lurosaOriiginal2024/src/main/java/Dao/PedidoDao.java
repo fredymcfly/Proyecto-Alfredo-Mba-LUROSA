@@ -20,8 +20,13 @@ private static Connection con = null; // Si lo privatizas, solo se puede acceder
 		this.con = DBConexion.getConexion();
 	}
 	
-	
-	
+    /**
+     * Método para obtener la instancia única de PedidoDao (Singleton).
+     * 
+     * @return instancia única de PedidoDao.
+     * @throws SQLException si ocurre un error al obtener la conexión.
+     */
+
 	// PATRON SINGELTON 
 	public static PedidoDao getInstance() throws SQLException {
 		if (instance == null) {
@@ -30,7 +35,12 @@ private static Connection con = null; // Si lo privatizas, solo se puede acceder
 		return instance;
 	}
 
-	
+	/**
+     * Inserta un nuevo pedido en la base de datos.
+     * 
+     * @param pedi el objeto Pedido a insertar.
+     * @return el objeto Pedido insertado con el ID generado, o null si ocurre un error.
+     */
 	
 	
 public Pedido insertar(Pedido pedi) {
@@ -77,6 +87,12 @@ public Pedido insertar(Pedido pedi) {
 
 
 // LISTAR PEDIDO 
+/**
+ * Lista todos los pedidos en la base de datos.
+ * 
+ * @return una lista de objetos Pedido.
+ * @throws SQLException si ocurre un error al realizar la consulta.
+ */
 
 
 	public ArrayList<Pedido>listar() throws SQLException{
@@ -103,6 +119,12 @@ public Pedido insertar(Pedido pedi) {
 	
 	
 
+	/**
+     * Actualiza un pedido en la base de datos.
+     * 
+     * @param pedi el objeto Pedido con los datos actualizados.
+     * @return el objeto Pedido actualizado, o null si ocurre un error.
+     */
     public Pedido editarPedido(Pedido pedi) {
 		
 		//ponemos bloque try-catch para controlar cualquier excepcion de sql 
